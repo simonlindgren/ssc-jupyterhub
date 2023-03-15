@@ -2,28 +2,21 @@
 
 This guide is based on [torkar](https://github.com/torkar)'s excellent [tutorial](https://torkar.github.io/comp.html) about RStudio for SSC, and on my own [guide](https://github.com/simonlindgren/jupyterhub-setup) for setting up JupyterHub.
 
-## Get the machine
+## Get access to SSC
 
 If you work at a Swedish university, you can apply for free computing resources from Swedish Science Cloud.
 
 1.  Go to [SNIC SUPR](https://supr.snic.se/) and set up an account (login with your university account).
 2.  Create a new proposal and wait for it to be approved (usually a day or two).
-3.  Go to https://cloud.snic.se and chose the appropriate region, for example 
+3.  Go to https://cloud.snic.se and chose the appropriate region (WEST-1, EAST-1, NORTH-1).
+
+## Create a machine
+
+1. Go to Compute → Images, and pick OS by clicking `Launch` to the right. I chose Ubuntu 22.04.
 
 
-As a researcher in computer science/software engineering, one often needs computational resources to conduct analyses. After having run computations on your local computers for some years you’ve finally figured out that this is neither sane nor cool. Hence, below follows instructions on how to get resources online for free.If you work at a Swedish university.
+---
 
-We will use SNIC as a resource since it’s free for university employees in Sweden. After some recent upgrades I would say that it’s very simple to use and setup. In short, you start by doing the following:If you find any problems following these instructions then please do tell me.
-
-   
-    Click Rounds and select SNIC Science Cloud.
-    Create new proposal (make sure you ask for 1 year).
-    Wait for it to be approved (24 h usually).
-    Then go to https://cloud.snic.se and click WEST-1.If you belong to CTH/GU.
-
-The current default seems to be that you’re issued 20 VCPUs, 50 GB RAM, 1 TB HD, and 5 floating IPs. Now is the time to make use of that :)
-
-    Go to Compute → Images, and pick Ubuntu 18.04 (the CentOS version is way too old) by clicking Launch to the right.
     Details: Write an instance name, e.g., ProfTorkarIsALivingGod.
     Source: Make sure `Ubuntu 18.04` is picked.
     Flavor: Pick the hardware you want to use.YMMV but I personally use ssc.xlarge.highcpu with 16 VCPUs, since Stan now has support for within-chain parallelization.
