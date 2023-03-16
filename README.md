@@ -129,4 +129,7 @@ If you work at a Swedish university, you can apply for free computing resources 
 - Make sure to be root whenever managing the hub (`sudo -i`).
 - Make sure to be in the jhub conda environment (`conda activate jhub`).
 - Make sure to run the launch command (`jupyterhub`) while in the same dir as the config file (i.e., `/etc/jupyterhub`.
+- The hub will be accessible at `https://<your-external-(floating)-server-ip>`.
+
+- For additional tips, please refer to https://github.com/simonlindgren/jupyterhub-setup.
 
