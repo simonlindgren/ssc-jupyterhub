@@ -62,28 +62,22 @@ If you work at a Swedish university, you can apply for free computing resources 
     sudo pip install importlib-resources
     ```
 
-### 4. Configure JupyterHub
+5. Configure JupyterHub
+    - `node` setup
+        - To be able to run jupyterlab extensions, it it crucial to have a recent version of `node` installed under anaconda.
 
-#### 4.1 `node` setup
-To be able to run jupyterlab extensions, it it crucial to have a recent version of `node` installed under anaconda.
+        ```
+        curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+        sudo apt install -y nodejs
+        ```
+        Run `node -v` to make sure that your version is recent (i.e., 16.x).
+        
+        If not: Check where your `node`'s are and symlink to the right one. `which -a node` will find paths to any node installations. Use the `ln -s` command to symlink the node commant to point to the newer version.
 
-```
-curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt install -y nodejs
-```
-Check where your `node`'s are and symlink to the right one.
 
-`which -a node` will find one under anaconda and one in usr/bin/node
 
-`rm /opt/anaconda3/bin/node` delete the anaconda node
+----
 
-`ln -s /usr/bin/node /opt/anaconda3/bin/node` make a symlink to the newer one
-
-Test:
-```
-which node
-node -v
-```
 
 #### 4.2 lab extensions
 
