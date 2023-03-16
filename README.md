@@ -55,13 +55,12 @@ If you work at a Swedish university, you can apply for free computing resources 
     sudo apt upgrade
     sudo apt install python3-pip
     ```
-
-### 3. Install Jupyter
-```
-conda install jupyterhub
-conda install jupyterlab
-sudo pip install importlib-resources
-```
+4. Install Jupyter
+    ```
+    conda install jupyterhub
+    conda install jupyterlab
+    sudo pip install importlib-resources
+    ```
 
 ### 4. Configure JupyterHub
 
