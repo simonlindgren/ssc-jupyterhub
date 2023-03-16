@@ -79,20 +79,15 @@ If you work at a Swedish university, you can apply for free computing resources 
         ```
         jupyter labextension install @jupyterlab/hub-extension
         ```
+    - Set up SSL on the server to be able to use https:
+        ```
+        sudo apt install letsencrypt
+        sudo certbot certonly
+        ```
 
-#### 4.3 ssl setup
+        Choose: `1: Spin up a temporary webserver (standalone)`, then go through the generation process.
 
-Your domain name (<your.address>, e.g. http://myhubserver.com) must be set up with your hosting provider to point to the static ip address of the server.
-
-We must set up SSL on the server to be able to use https:
-
-```
-sudo apt install letsencrypt
-sudo certbot certonly
-```
-Choose: `1: Spin up a temporary webserver (standalone)`, then go through the generation process.
-
-We now have certificates in the `/etc/letsencrypt/live/<your.address>` folder: `fullchain.pem` is the certificate, and `privkey.pem` is the key file.
+        We now have certificates in the `/etc/letsencrypt/live/<your.address>` folder: `fullchain.pem` is the certificate, and `privkey.pem` is the key file.
 
 #### 4.4 jupyterhub config
 Now generate a config file for Jupyterhub in the standard UNIX filesystem location:
