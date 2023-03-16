@@ -33,8 +33,8 @@ If you work at a Swedish university, you can apply for free computing resources 
         - Also open ports `443`(HTTPS) and `80`(HTTP).
 
 ## Install JupyterHub 
-1. SSH to the machine: `ssh -i /path/to/key.pem ubuntu@<external-(floating)-server-ip>`.
-2. Become root `sudo -i`
+1. SSH to the machine: `ssh -i /path/to/key.pem ubuntu@<external-(floating)-server-ip>`
+2. Become root: `sudo -i`
 3. Set up Anaconda Python.
     - Download and install Anaconda (most recent). Then remove the installer, and activate anaconda.
 
