@@ -49,7 +49,7 @@ If you work at a Swedish university, you can apply for free computing resources 
 
         source /opt/anaconda3/bin/activate
         ```
-3. Install `pip` for python.
+3. Install `pip` for Python.
     ```
     sudo apt update
     sudo apt upgrade
