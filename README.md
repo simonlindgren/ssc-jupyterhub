@@ -49,17 +49,12 @@ If you work at a Swedish university, you can apply for free computing resources 
 
         source /opt/anaconda3/bin/activate
         ```
-        
-        
- ----
-
-Install `pip` for python.
-
-```
-sudo apt update
-sudo apt upgrade
-sudo apt install python3-pip
-```
+3. Install `pip` for python.
+    ```
+    sudo apt update
+    sudo apt upgrade
+    sudo apt install python3-pip
+    ```
 
 ### 3. Install Jupyter
 ```
