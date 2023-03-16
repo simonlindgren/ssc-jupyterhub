@@ -67,19 +67,7 @@ If you work at a Swedish university, you can apply for free computing resources 
     ```
 
 5. Configure JupyterHub
-    - `node` setup
-        - To be able to run jupyterlab extensions, it it crucial to have a recent version of `node` installed under anaconda.
-        
-        Run `node -v` to make sure that your version is recent (i.e., 16.x).
-        
-        If not, install node:
-        ```
-        curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-        sudo apt install -y nodejs
-        ```       
-        Check where your `node`'s are and symlink to the right one. `which node` tells you where the node command is currently pointing. `which -a node` will find paths to any node installations. Use the `ln -s` command to symlink the node command to point to the newer version.
-
-    - Enable JupyterLab for JupyterHub (optional).
+    - Enable JupyterLab for JupyterHub
 
         ```
         jupyter labextension install @jupyterlab/hub-extension
