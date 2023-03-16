@@ -32,7 +32,7 @@ If you work at a Swedish university, you can apply for free computing resources 
   5. Go to Network → Security groups → Manage rules.
         - Click `Add Rule` and add the rule for SSH. Leave the CIDR at `0.0.0.0/0`.
         - For running JupyterHub, open port `443`for the ip.
-            -`Add Rule`-> `Custom TCP Rule`-> Port: `443`.
+        - `Add Rule`-> `Custom TCP Rule`-> Port: `443`.
 
 ## Install JupyterHub 
 1. SSH to the machine: `ssh -i /path/to/key.pem ubuntu@<server-ip>`.
