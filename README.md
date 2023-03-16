@@ -36,5 +36,6 @@ If you work at a Swedish university, you can apply for free computing resources 
 
 ## Install JupyterHub 
 1. SSH to the machine: `ssh -i /path/to/key.pem ubuntu@<server-ip>`.
+2. Use the guide available at https://github.com/simonlindgren/jupyterhub-setup to setup JupyterHub.
 
 
