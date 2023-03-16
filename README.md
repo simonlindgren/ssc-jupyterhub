@@ -75,36 +75,21 @@ If you work at a Swedish university, you can apply for free computing resources 
         
     - Set up SSL on the server to be able to use https:
         ```
-        sudo apt install letsencrypt
-        sudo certbot certonly
+        apt install letsencrypt
+        certbot certonly
         ```
 
         Choose: `1: Spin up a temporary webserver (standalone)`, then go through the generation process.
 
         We now have certificates in the `/etc/letsencrypt/live/<your.address>` folder: `fullchain.pem` is the certificate, and `privkey.pem` is the key file.
-     - As we want to use port 443, we must remove the Linux default setting that prohibits users other than root to open ports below 1024.
-        - `sudo sysctl -w net.ipv4.ip_unprivileged_port_start=80`
-        - Also do this, to remember the change at reboot: 
-            - `sudo -i`
-            - `echo net.ipv4.ip_unprivileged_port_start=80 > /etc/sysctl.d/99-reduce-unprivileged-port-start-to-80.conf`
-            - `exit`
-     
+          
      - Now generate a config file for Jupyterhub in a directory:
 
         ```
-        mkdir jupyterhub # <-- note that this will then be created under /home/ubuntu 
-        cd jupyterhub
+        mkdir /etc/jupyterhub
+        cd /etc/jupyterhub
         jupyterhub --generate-config
-        ```
-        
-        Copy the SSL certificates here.
-        
-        `sudo cp /etc/letsencrypt/live/digsum.net/fullchain.pem fullchain.pem`
-        
-        `sudo cp /etc/letsencrypt/live/digsum.net/privkey.pem privkey.pem`
-        
-        `sudo chown -R ubuntu /home/ubuntu`
-        
+        ```       
         Edit the config file:
         ```
         nano jupyterhub_config.py
@@ -116,7 +101,6 @@ If you work at a Swedish university, you can apply for free computing resources 
         # Set up users
         c.Authenticator.admin_users = {'<name-of-your-first-admin-user>'}
         # Set up web stuff
-        c.JupyterHub.ip = '<the.internal.ip.address.from.ssc>'
         c.JupyterHub.port = 443
         c.JupyterHub.ssl_key = '/etc/letsencrypt/live/<your.address>/privkey.pem'
         c.JupyterHub.ssl_cert = '/etc/letsencrypt/live/<your.address>/fullchain.pem'
@@ -129,14 +113,14 @@ If you work at a Swedish university, you can apply for free computing resources 
 
     - Make the first user:
     
-        `sudo useradd -m <name-of-your-first-admin-user>`
+        `useradd -m <name-of-your-first-admin-user>`
 
-        `sudo passwd <name-of-your-first-admin-user>`
+        `passwd <name-of-your-first-admin-user>`
 
     - Now make a `notebooks` directory under your first admin user's home dir, so that this user has a directory where the hub can spawn. Also give the admin user rights to that directory:
 
         ```
-        sudo mkdir /home/<name-of-your-first-admin-user>/notebooks
-        sudo chown -R <name-of-your-first-admin-user> /home/<name-of-your-first-admin-user>
+        mkdir /home/<name-of-your-first-admin-user>/notebooks
+        chown -R <name-of-your-first-admin-user> /home/<name-of-your-first-admin-user>
         ```
 
