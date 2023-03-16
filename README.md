@@ -12,7 +12,9 @@ If you work at a Swedish university, you can apply for free computing resources 
 
 ## Create a machine
 
-1. Go to Compute → Images, and pick OS by clicking `Launch` to the right. I chose Ubuntu 22.04.
+1. Go to Compute → Images. Pick OS and click `Launch` to the right. I chose Ubuntu 22.04.
+2. 'Launch Instance' settings:
+    - Details: Enter an instance name, e.g. RebelAllianceMegaHub.
 
 
 ---
