@@ -29,8 +29,9 @@ If you work at a Swedish university, you can apply for free computing resources 
   3. Go to Compute → Instances and make sure that the Power State is `Running`.
     - Click to the right and associate a floating IP with your internal IPv4 address.
   4. Go to Network → Security groups → Manage rules.
-
     - Click `Add Rule` and add the rule for SSH. Leave the CIDR at `0.0.0.0/0`. 
+
+    - 
   
         If you would like to run RStudio Server then you might as well also make sure that port 8787 is open for your IP.
 
