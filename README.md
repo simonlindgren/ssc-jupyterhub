@@ -34,12 +34,13 @@ If you work at a Swedish university, you can apply for free computing resources 
 
 ## Install JupyterHub 
 1. SSH to the machine: `ssh -i /path/to/key.pem ubuntu@<external-(floating)-server-ip>`.
-2. Set up Anaconda Python.
+2. Become root `sudo -i`
+3. Set up Anaconda Python.
     - Download and install Anaconda (most recent). Then remove the installer, and activate anaconda.
 
         ```
         wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
-        sudo bash Anaconda3-2022.10-Linux-x86_64.sh
+        bash Anaconda3-2022.10-Linux-x86_64.sh
 
         # Choose to install under opt: [/root/anaconda3] >>> /opt/anaconda3
         # When asked, say 'yes' to 'conda init'
