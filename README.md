@@ -30,11 +30,10 @@ If you work at a Swedish university, you can apply for free computing resources 
         - Click to the right and associate a floating IP with your internal IPv4 address.
   5. Go to Network → Security groups → Manage rules.
         - Click `Add Rule` and add the rule for SSH. Leave the CIDR at `0.0.0.0/0`.
-        - For running JupyterHub, open port `8080`for the ip: `Add Rule`-> `Custom TCP Rule`-> Port: `8080`.
-        - Open ports 80 and 443 in the same way.
+        - Also open ports `443`(HTTPS) and `80`(HTTP).
 
 ## Install JupyterHub 
-1. SSH to the machine: `ssh -i /path/to/key.pem ubuntu@<server-ip>`.
+1. SSH to the machine: `ssh -i /path/to/key.pem ubuntu@<external-(floating)-server-ip>`.
 2. Set up Anaconda Python.
     - Download and install Anaconda (most recent). Then remove the installer, and activate anaconda.
 
@@ -48,6 +47,10 @@ If you work at a Swedish university, you can apply for free computing resources 
         rm Anaconda3-2022.10-Linux-x86_64.sh
 
         source /opt/anaconda3/bin/activate
+        
+        # Create and activate a conda environment for use with jupyterhub
+        conda create -n jhub
+        conda activate jhub
         ```
 3. Install `pip` for Python.
     ```
@@ -57,28 +60,30 @@ If you work at a Swedish university, you can apply for free computing resources 
     ```
 4. Install Jupyter
     ```
-    conda install jupyterhub
-    conda install jupyterlab
+    conda install -c conda-forge jupyterhub
+    conda install -c conda-forge jupyterlab
     sudo pip install importlib-resources
     ```
 
 5. Configure JupyterHub
     - `node` setup
         - To be able to run jupyterlab extensions, it it crucial to have a recent version of `node` installed under anaconda.
-
+        
+        Run `node -v` to make sure that your version is recent (i.e., 16.x).
+        
+        If not, install node:
         ```
         curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
         sudo apt install -y nodejs
-        ```
-        Run `node -v` to make sure that your version is recent (i.e., 16.x).
-        
-        If not: Check where your `node`'s are and symlink to the right one. `which node` tells you where the node command is currently pointing. `which -a node` will find paths to any node installations. Use the `ln -s` command to symlink the node command to point to the newer version.
+        ```       
+        Check where your `node`'s are and symlink to the right one. `which node` tells you where the node command is currently pointing. `which -a node` will find paths to any node installations. Use the `ln -s` command to symlink the node command to point to the newer version.
 
     - Enable JupyterLab for JupyterHub (optional).
 
         ```
         jupyter labextension install @jupyterlab/hub-extension
         ```
+        
     - Set up SSL on the server to be able to use https:
         ```
         sudo apt install letsencrypt
@@ -88,14 +93,27 @@ If you work at a Swedish university, you can apply for free computing resources 
         Choose: `1: Spin up a temporary webserver (standalone)`, then go through the generation process.
 
         We now have certificates in the `/etc/letsencrypt/live/<your.address>` folder: `fullchain.pem` is the certificate, and `privkey.pem` is the key file.
-     - Now generate a config file for Jupyterhub in the standard UNIX filesystem location:
+     - As we want to use port 443, we must remove the Linux default setting that prohibits users other than root to open ports below 1024.
+        - `sudo sysctl -w net.ipv4.ip_unprivileged_port_start=80`
+        - Also do this, to remember the change at reboot: 
+            - `sudo -i`
+            - `echo net.ipv4.ip_unprivileged_port_start=80 > /etc/sysctl.d/99-reduce-unprivileged-port-start-to-80.conf`
+            - `exit`
+     
+     - Now generate a config file for Jupyterhub in a directory:
 
         ```
-        sudo chown -R your-username /etc  ## <-- in this SSC case, the username is ubuntu
-        mkdir /etc/jupyterhub
-        cd /etc/jupyterhub
-        jupyterhub --generate-config 
+        mkdir jupyterhub # <-- note that this will then be created under /home/ubuntu 
+        cd jupyterhub
+        jupyterhub --generate-config
         ```
+        
+        Copy the SSL certificates here.
+        
+        `sudo cp /etc/letsencrypt/live/digsum.net/fullchain.pem fullchain.pem`
+        `sudo cp /etc/letsencrypt/live/digsum.net/privkey.pem privkey.pem`
+        `sudo chown -R ubuntu /home/ubuntu`
+        
         Edit the config file:
         ```
         nano jupyterhub_config.py
@@ -108,7 +126,7 @@ If you work at a Swedish university, you can apply for free computing resources 
         c.Authenticator.admin_users = {'<name-of-your-first-admin-user>'}
         # Set up web stuff
         c.JupyterHub.ip = '<the.internal.ip.address.from.ssc>'
-        c.JupyterHub.port = 8080
+        c.JupyterHub.port = 443
         c.JupyterHub.ssl_key = '/etc/letsencrypt/live/<your.address>/privkey.pem'
         c.JupyterHub.ssl_cert = '/etc/letsencrypt/live/<your.address>/fullchain.pem'
         c.JupyterHub.cleanup_servers = True
@@ -118,17 +136,18 @@ If you work at a Swedish university, you can apply for free computing resources 
         c.Spawner.notebook_dir = '~/notebooks'
         ```
 
-Make the first user:
-`useradd -m <name-of-your-first-admin-user>`
+    - Make the first user:
+    
+        `sudo useradd -m <name-of-your-first-admin-user>`
 
-`passwd <name-of-your-first-admin-user>`
+        `sudo passwd <name-of-your-first-admin-user>`
 
-Now make a `notebooks` directory under your first admin user's home dir, so that this user has a directory where the hub can spawn. Also give the admin user rights to that directory:
+    - Now make a `notebooks` directory under your first admin user's home dir, so that this user has a directory where the hub can spawn. Also give the admin user rights to that directory:
 
-```
-mkdir /home/<name-of-your-first-admin-user>/notebooks
-chown -R <name-of-your-first-admin-user> /home/<name-of-your-first-admin-user>/notebooks
-```
+        ```
+        sudo mkdir /home/<name-of-your-first-admin-user>/notebooks
+        sudo chown -R <name-of-your-first-admin-user> /home/<name-of-your-first-admin-user>
+        ```
 
 The install will default to the `sh` shell (e.g. in users' Terminals in JupyterHub). 
 We want the `bash` shell to be default:
