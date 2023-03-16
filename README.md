@@ -88,37 +88,35 @@ If you work at a Swedish university, you can apply for free computing resources 
         Choose: `1: Spin up a temporary webserver (standalone)`, then go through the generation process.
 
         We now have certificates in the `/etc/letsencrypt/live/<your.address>` folder: `fullchain.pem` is the certificate, and `privkey.pem` is the key file.
+     - Now generate a config file for Jupyterhub in the standard UNIX filesystem location:
 
-#### 4.4 jupyterhub config
-Now generate a config file for Jupyterhub in the standard UNIX filesystem location:
+        ```
+        sudo chown -R your-username:your-username /etc
+        sudo mkdir /etc/jupyterhub
+        cd /etc/jupyterhub
+        jupyterhub --generate-config 
+        ```
+        Edit the config file:
+        ```
+        nano jupyterhub_config.py
+        ```
+        Add these things to it: 
 
-```
-sudo chown -R your-username:your-username /etc
-sudo mkdir /etc/jupyterhub
-cd /etc/jupyterhub
-jupyterhub --generate-config 
-```
-Edit the config file:
-```
-nano jupyterhub_config.py
-```
-Add these things to it: 
-
-```
-# CONFIGURATION FILE FOR JUPYTERHUB
-# Set up users
-c.Authenticator.admin_users = {'<name-of-your-first-admin-user>'}
-# Set up web stuff
-c.JupyterHub.ip = '<your.address>'
-c.JupyterHub.port = 443
-c.JupyterHub.ssl_key = '/etc/letsencrypt/live/<your.address>/privkey.pem'
-c.JupyterHub.ssl_cert = '/etc/letsencrypt/live/<your.address>/fullchain.pem'
-c.JupyterHub.cleanup_servers = True
-# Set up spawner
-c.Spawner.default_url = '/lab'
-c.Spawner.cmd = ['jupyter-labhub']
-c.Spawner.notebook_dir = '~/notebooks'
-```
+        ```
+        # CONFIGURATION FILE FOR JUPYTERHUB
+        # Set up users
+        c.Authenticator.admin_users = {'<name-of-your-first-admin-user>'}
+        # Set up web stuff
+        c.JupyterHub.ip = '<your.address>'
+        c.JupyterHub.port = 443
+        c.JupyterHub.ssl_key = '/etc/letsencrypt/live/<your.address>/privkey.pem'
+        c.JupyterHub.ssl_cert = '/etc/letsencrypt/live/<your.address>/fullchain.pem'
+        c.JupyterHub.cleanup_servers = True
+        # Set up spawner
+        c.Spawner.default_url = '/lab'
+        c.Spawner.cmd = ['jupyter-labhub']
+        c.Spawner.notebook_dir = '~/notebooks'
+        ```
 
 Make the first user:
 `useradd -m <name-of-your-first-admin-user>`
