@@ -22,13 +22,15 @@ If you work at a Swedish university, you can apply for free computing resources 
     - Security Groups: Make sure `default` is picked.
     - Key Pair:
         - Create a Key Pair.
-
-
-
-    Key pair: Create Key Pair and make sure to download the private key in a safe space and make sure to restrict permissions on that file.chmod 600 key.pem on UNIX/LINUX/OSX.
-    Click Launch instance and go to Compute → Instances.
-    Once it’s up and running, click to the right and assign a floating IP to your internal IPv4 address.
-    Go to Network → Security groups → Manage rules. Click Add Rule and add the rule for SSH. At the bottom you add the IP (or a range of IPs) that you want to allow access.e.g., 185.205.225.196/32 allows only that IP access to you environment, while 185.205.225.0/24 allows access to all IPs starting with 185.205.225.
+        - Put it in a *.pem file on your local system. I named mine `key.pem`.
+        - Make sure to restrict permissions on that file (e.g.,`chmod 600 key.pem`).
+    - Remaining settings: Do nothing.
+    - Click `Launch Instance`.
+  3. Go to Compute → Instances and make sure that the Power State is `Running`.
+    - Click to the right and associate a floating IP with your internal IPv4 address.
+  4. Go to Network → Security groups → Manage rules.
+    - Click `Add Rule` and add the rule for SSH. Leave the CIDR at `0.0.0.0/0`. 
+  
         If you would like to run RStudio Server then you might as well also make sure that port 8787 is open for your IP.
 
 Now you can SSH to your environment:The IP you’ve been assigned you can find on the page Compute → Instances.
