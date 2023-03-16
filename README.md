@@ -107,8 +107,8 @@ If you work at a Swedish university, you can apply for free computing resources 
         # Set up users
         c.Authenticator.admin_users = {'<name-of-your-first-admin-user>'}
         # Set up web stuff
-        c.JupyterHub.ip = '<your.address>'
-        c.JupyterHub.port = 443
+        c.JupyterHub.ip = '<the.internal.ip.address.from.ssc>'
+        c.JupyterHub.port = 8080
         c.JupyterHub.ssl_key = '/etc/letsencrypt/live/<your.address>/privkey.pem'
         c.JupyterHub.ssl_cert = '/etc/letsencrypt/live/<your.address>/fullchain.pem'
         c.JupyterHub.cleanup_servers = True
