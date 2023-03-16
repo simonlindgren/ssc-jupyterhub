@@ -92,7 +92,7 @@ If you work at a Swedish university, you can apply for free computing resources 
 
         ```
         sudo chown -R your-username /etc  ## <-- in this SSC case, the username is ubuntu
-        sudo mkdir /etc/jupyterhub
+        mkdir /etc/jupyterhub
         cd /etc/jupyterhub
         jupyterhub --generate-config 
         ```
