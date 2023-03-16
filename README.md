@@ -91,7 +91,7 @@ If you work at a Swedish university, you can apply for free computing resources 
      - Now generate a config file for Jupyterhub in the standard UNIX filesystem location:
 
         ```
-        sudo chown -R your-username:your-username /etc
+        sudo chown -R your-username /etc  ## <-- in this SSC case, the username is ubuntu
         sudo mkdir /etc/jupyterhub
         cd /etc/jupyterhub
         jupyterhub --generate-config 
