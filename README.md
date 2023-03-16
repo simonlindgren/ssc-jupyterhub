@@ -27,8 +27,8 @@ If you work at a Swedish university, you can apply for free computing resources 
     - Remaining settings: Do nothing.
     - Click `Launch Instance`.
   3. Go to Compute → Instances and make sure that the Power State is `Running`.
-    - Click to the right and associate a floating IP with your internal IPv4 address.
-  4. Go to Network → Security groups → Manage rules.
+        - Click to the right and associate a floating IP with your internal IPv4 address.
+  5. Go to Network → Security groups → Manage rules.
     - Click `Add Rule` and add the rule for SSH. Leave the CIDR at `0.0.0.0/0`. 
 
     - 
