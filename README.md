@@ -124,3 +124,9 @@ If you work at a Swedish university, you can apply for free computing resources 
         chown -R <name-of-your-first-admin-user> /home/<name-of-your-first-admin-user>
         ```
 
+
+## Run JupyterHub
+- Make sure to be root whenever managing the hub (`sudo -i`).
+- Make sure to be in the jhub conda environment (`conda activate jhub`).
+- Make sure to run the launch command (`jupyterhub`) while in the same dir as the config file (i.e., `/etc/jupyterhub`.
+
