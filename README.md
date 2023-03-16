@@ -72,7 +72,7 @@ If you work at a Swedish university, you can apply for free computing resources 
         ```
         Run `node -v` to make sure that your version is recent (i.e., 16.x).
         
-        If not: Check where your `node`'s are and symlink to the right one. `which -a node` will find paths to any node installations. Use the `ln -s` command to symlink the node commant to point to the newer version.
+        If not: Check where your `node`'s are and symlink to the right one. `which node` tells you where the node command is currently pointing. `which -a node` will find paths to any node installations. Use the `ln -s` command to symlink the node command to point to the newer version.
 
 
 
