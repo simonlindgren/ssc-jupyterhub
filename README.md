@@ -21,9 +21,8 @@ If you work at a Swedish university, you can apply for free computing resources 
     - Network Ports: Skip for now.
     - Security Groups: Make sure `default` is picked.
     - Key Pair:
-        - Create a Key Pair. 
-        - Select nothing in the dropdown menu.
-        - Keep  the resulting *.pem file on your local system. I named mine `key.pem`.
+        - Create a Key Pair. Give it a name and leave Key Type empty.
+        - Save the key in a *.pem file on your local system. I named mine `key.pem`.
         - Make sure to restrict permissions on that file (e.g.,`chmod 600 key.pem`).
     - Remaining settings: Do nothing.
     - Click `Launch Instance`.
@@ -31,7 +30,8 @@ If you work at a Swedish university, you can apply for free computing resources 
         - Click to the right and associate a floating IP with your internal IPv4 address.
   5. Go to Network → Security groups → Manage rules.
         - Click `Add Rule` and add the rule for SSH. Leave the CIDR at `0.0.0.0/0`.
-        - For running JupyterHub, open port `443`for the ip: `Add Rule`-> `Custom TCP Rule`-> Port: `443`.
+        - For running JupyterHub, open port `8080`for the ip: `Add Rule`-> `Custom TCP Rule`-> Port: `8080`.
+        - Open ports 80 and 443 in the same way.
 
 ## Install JupyterHub 
 1. SSH to the machine: `ssh -i /path/to/key.pem ubuntu@<server-ip>`.
