@@ -15,16 +15,16 @@ If you work at a Swedish university, you can apply for free computing resources 
 1. Go to Compute → Images. Pick OS and click `Launch` to the right. I chose Ubuntu 22.04.
 2. 'Launch Instance' settings:
     - Details: Enter an instance name, e.g. RebelAllianceMegaHub.
+    - Source: Make sure that your chosen OS is picked.
+    - Flavor: Pick desired hardware. I chose `ssc.xlarge.highcpu`.
+    - Networks: Pick the NAISS network.
+    - Network Ports: Skip for now.
+    - Security Groups: Make sure `default` is picked.
+    - Key Pair:
+        - Create a Key Pair.
 
 
----
 
-    Details: Write an instance name, e.g., ProfTorkarIsALivingGod.
-    Source: Make sure `Ubuntu 18.04` is picked.
-    Flavor: Pick the hardware you want to use.YMMV but I personally use ssc.xlarge.highcpu with 16 VCPUs, since Stan now has support for within-chain parallelization.
-    Networks: Pick `SNIC 20XX/YY-ZZ Internal IPv4 Network`.
-    Network ports: Skip this for now.
-    Security groups: Make sure `default` is picked.
     Key pair: Create Key Pair and make sure to download the private key in a safe space and make sure to restrict permissions on that file.chmod 600 key.pem on UNIX/LINUX/OSX.
     Click Launch instance and go to Compute → Instances.
     Once it’s up and running, click to the right and assign a floating IP to your internal IPv4 address.
