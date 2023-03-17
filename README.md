@@ -8,7 +8,7 @@ If you work at a Swedish university, you can apply for free computing resources 
 
 1.  Go to [SNIC SUPR](https://supr.snic.se/) and set up an account (login with your university account).
 2.  Create a new proposal and wait for it to be approved (usually a day or two).
-3.  Go to https://cloud.snic.se and choose the appropriate region (WEST-1, EAST-1, NORTH-1).
+3.  Go to https://cloud.snic.se and open a dashboard for the appropriate region (WEST-1, EAST-1, NORTH-1).
 
 ## Create a machine
 
