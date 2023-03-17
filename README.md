@@ -111,7 +111,7 @@ If you work at a Swedish university, you can apply for free computing resources 
         c.Spawner.notebook_dir = '~/notebooks'
         ```
 
-    - Make the first user:
+    - Create the first user:
     
         `useradd -m <name-of-your-first-admin-user>`
 
