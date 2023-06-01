@@ -34,8 +34,21 @@ If you work at a Swedish university, you can apply for free computing resources 
 
 ## Install JupyterHub 
 1. SSH to the machine: `ssh -i /path/to/key.pem ubuntu@<external-(floating)-server-ip>`
-2. Become root: `sudo -i`
-3. Set up Anaconda Python.
+2. We will use [The Littlest Jupyterhub]([url](https://tljh.jupyter.org/en/latest/)) installation. This installation procedure needs to write to the `/opt/tjlh` and to the `/tmp` directories, but SSC does not allow storage space in those locations of the file system. Therefore, we create locations by these two names on an available storage drive, and mount them to the locations that the installer needs.
+
+    - Our example storage location is `/mnt/blob`. So: `cd /mnt/blob`; `sudo mkdir tmp`; `sudo mkdir opt`; `cd opt`; `sudo mkdir tljh`; `cd /mnt/blob`-
+
+
+4. 
+5. 
+6. 
+7. This will install to `/opt/tljh` by default. As SSC does not provide sufficent storage space in that location of the file system. We mount a location that allows storage to `/opt/tljh`: `sudo mount --bind /mnt/blob /opt/tljh`. No `/opt/tljh` is a location with storage space for the installer to use.
+8. Follo
+
+
+
+3. Become root: `sudo -i`
+4. Set up Anaconda Python.
     - Download and install Anaconda (most recent). Then remove the installer, and activate anaconda.
 
         ```
