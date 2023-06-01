@@ -39,4 +39,5 @@ If you work at a Swedish university, you can apply for free computing resources 
     - Change the default user interface to JupyterLab [here](https://tljh.jupyter.org/en/latest/howto/user-env/notebook-interfaces.html#changing-the-default-user-interface).
     - Activate https access [here](https://tljh.jupyter.org/en/latest/howto/admin/https.html).
     - Install stuff for all users by `sudo -E pip install something`; `sudo -E conda install something`
+    - For my own use, I keep an updated script of all things I install to my hub --> [hubstuff.sh]()
 
