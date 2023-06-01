@@ -34,8 +34,4 @@ If you work at a Swedish university, you can apply for free computing resources 
 
 ## Install JupyterHub 
 1. SSH to the machine: `ssh -i /path/to/key.pem ubuntu@<external-(floating)-server-ip>`
-2. We will use [The Littlest Jupyterhub](https://tljh.jupyter.org/en/latest/) installation. This installation procedure needs to write to the `/opt/tjlh` and to the `/tmp` directories, but SSC does not allow storage space in those locations of the file system. Therefore, we create locations by these two names on an available storage drive, and mount them to the locations that the installer needs.
-
-    - Our example storage location is `/mnt/blob`. So: `cd /mnt/blob`; `sudo mkdir tmp`; `sudo mkdir opt`; `cd opt`; `sudo mkdir tljh`; `cd /mnt/blob`.
-    - With these locations created, we mount them: `sudo mount --bind /mnt/blob/tmp /tmp`; and `sudo mount --bind /mnt/blob/opt/tljh /opt/tljh`.
-3. Now, follow through the TLHJ [installation instructions](https://tljh.jupyter.org/en/latest/install/custom-server.html).
+2. Now, follow through the TLHJ [installation instructions](https://tljh.jupyter.org/en/latest/install/custom-server.html).
