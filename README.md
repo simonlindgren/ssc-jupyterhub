@@ -14,9 +14,9 @@ If you work at a Swedish university, you can apply for free computing resources 
 
 1. Go to Compute → Images. Pick OS and click `Launch` to the right. I chose Ubuntu 22.04.
 2. 'Launch Instance' settings:
-    - Details: Enter an instance name, e.g. RebelAllianceMegaHub.
+    - Details: Enter an instance name, and set `Volume Size (GB)` to 1000 (SSC allows max 1TB).
     - Source: Make sure that your chosen OS is picked.
-    - Flavor: Pick desired hardware. I chose `ssc.xlarge.highcpu`.
+    - Flavor: Pick desired hardware. I chose `ssc.xlarge.highmem`.
     - Networks: Pick the NAISS network.
     - Network Ports: Skip for now.
     - Security Groups: Make sure `default` is picked.
