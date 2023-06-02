@@ -35,6 +35,7 @@ If you work at a Swedish university, you can apply for free computing resources 
 2. Now, follow through the TLHJ [installation instructions](https://tljh.jupyter.org/en/latest/install/custom-server.html).
 3. Some additional stuff:
     - Change the default user interface to JupyterLab [here](https://tljh.jupyter.org/en/latest/howto/user-env/notebook-interfaces.html#changing-the-default-user-interface).
+    - Deactivate the idle culler [here](https://tljh.jupyter.org/en/latest/topic/idle-culler.html#disabling-the-idle-culler)
     - Activate https access [here](https://tljh.jupyter.org/en/latest/howto/admin/https.html).
     - Install stuff for all users by `sudo -E pip install something`; `sudo -E conda install something`
     - Give user permissions to their folder, if it gets messed up: `sudo chown -R jupyter-<user> /home/jupyter-<user>`
