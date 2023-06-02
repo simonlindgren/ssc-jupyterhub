@@ -38,5 +38,5 @@ If you work at a Swedish university, you can apply for free computing resources 
     - Activate https access [here](https://tljh.jupyter.org/en/latest/howto/admin/https.html).
     - Install stuff for all users by `sudo -E pip install something`; `sudo -E conda install something`
     - Give user permissions to their folder, if it gets messed up: `sudo chown -R jupyter-<user> /home/jupyter-<user>`
-    - For my own use, I keep an updated script of all things I install to my hub --> [hubstuff.sh]()
+    - For my own use, I keep an updated script of all things I install to my hub --> [hubstuff.sh](https://github.com/simonlindgren/ssc-jupyterhub/blob/main/hubstuff.sh)
 
